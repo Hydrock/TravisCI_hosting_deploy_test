@@ -2,19 +2,19 @@ sudo: required
 language: node_js
 addons:
   ssh_known_hosts:
-   - hydrock.ru
-   - test.hydrock.ru
-   - vh20.timeweb.ru
-   - git.example.com
+  - hydrock.ru
+  - test.hydrock.ru
+  - vh20.timeweb.ru
+  - git.example.com
 before_install:
 - openssl aes-256-cbc -K $encrypted_20bbbffa0feb_key -iv $encrypted_20bbbffa0feb_iv
   -in deploy_rsa.enc -out deploy_rsa -d
 before_script:
-  - echo -e "Host heroku.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-  - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- echo -e "Host heroku.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 deploy:
   provider: script
   skip_cleanup: true
   script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/dist hydrock@vh20.timeweb.ru:test/public_html
   on:
-    branch: master 
+    branch: master
