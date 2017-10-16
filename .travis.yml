@@ -1,3 +1,5 @@
+sudo: required
+language: node_js
 addons:
   ssh_known_hosts: test.hydrock.ru
 before_install:
