@@ -11,7 +11,7 @@ before_deploy:
 - openssl aes-256-cbc -K $encrypted_24f8b4d39db1_key -iv $encrypted_24f8b4d39db1_iv
   -in ./tmp/deploy_rsa.enc -out ${TRAVIS_BUILD_DIR}/tmp/deploy_rsa -d
 - eval "$(ssh-agent -s)"
-- chmod 600 {TRAVIS_BUILD_DIR}/tmp/deploy_rsa
+- chmod 600 ${TRAVIS_BUILD_DIR}/tmp/deploy_rsa
 - mv ${TRAVIS_BUILD_DIR}/tmp/deploy_rsa ~/.ssh/id_rsa
 - cat ${TRAVIS_BUILD_DIR}/tmp/ssh_config >> ~/.ssh/config
 deploy:
