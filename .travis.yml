@@ -16,6 +16,6 @@ before_install:
 deploy:
   provider: script
   skip_cleanup: true
-  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/dist hydrock@vh20.timeweb.ru:test/public_html
+  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/dist/* hydrock@vh20.timeweb.ru:test/public_html
   on:
     branch: master
